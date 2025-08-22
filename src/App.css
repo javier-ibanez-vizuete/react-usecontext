@@ -34,6 +34,16 @@
 	font-weight: bolder;
 }
 
+.tab {
+	padding: var(--spacing-lg);
+	background-color: var(--btn-xtra-color);
+	border-radius: var(--border-radius-card);
+}
+
+.tab.active {
+	background-color: var(--btn-primary-color);
+}
+
 main {
 	flex: 1;
 
