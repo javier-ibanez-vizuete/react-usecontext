@@ -4,13 +4,16 @@ import "./index.css";
 import { App } from "./App.jsx";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
 import { UserProvider } from "./context/UserContext.jsx";
+import { LanguageProvider } from "./context/LanguageContext.jsx";
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
-		<UserProvider>
-			<ThemeProvider>
-				<App />
-			</ThemeProvider>
-		</UserProvider>
+		<LanguageProvider>
+			<UserProvider>
+				<ThemeProvider>
+					<App />
+				</ThemeProvider>
+			</UserProvider>
+		</LanguageProvider>
 	</StrictMode>
 );

@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import "./LoginForm.css";
 import { CustomInput } from "../CustomInput/CustomInput";
 import { UserContext } from "../../context/UserContext";
+import { LanguageContext } from "../../context/LanguageContext";
 
 const INITIAL_LOGIN_STATE = {
 	userName: "",
@@ -11,6 +12,7 @@ const INITIAL_LOGIN_STATE = {
 
 export const LoginForm = () => {
 	const { userLogin } = useContext(UserContext);
+	const { lang, TEXTS } = useContext(LanguageContext);
 
 	const [loginData, setLoginData] = useState(INITIAL_LOGIN_STATE);
 	const [error, setError] = useState("");
@@ -25,7 +27,6 @@ export const LoginForm = () => {
 
 	const onFormSubmit = (event) => {
 		event.preventDefault();
-		console.log("Enviando Formulario");
 
 		const { userName, userSurname, userEmail } = loginData;
 		if (!userName) return setError("Name field is required");
@@ -43,43 +44,43 @@ export const LoginForm = () => {
 
 	return (
 		<form className="login-form" onSubmit={onFormSubmit} onReset={onFormReset}>
-			<h2>Login Form</h2>
-			<CustomInput inputName={"userName"} labelName={"Name"}>
+			<h2>{TEXTS[lang].loginFormTitle}</h2>
+			<CustomInput inputName={"userName"} labelName={TEXTS[lang].labelName}>
 				<input
 					type="text"
 					name="userName"
 					id="userName"
 					value={userName}
 					onChange={onInputChange}
-					placeholder="Inser a Name"
+					placeholder={TEXTS[lang].inputNamePlaceholder}
 					minLength={2}
 					maxLength={20}
 					required
 				/>
 			</CustomInput>
 
-			<CustomInput inputName={"userSurname"} labelName={"Surname"}>
+			<CustomInput inputName={"userSurname"} labelName={TEXTS[lang].labelSurname}>
 				<input
 					type="text"
 					name="userSurname"
 					id="userSurname"
 					value={userSurname}
 					onChange={onInputChange}
-					placeholder="Insert a surname"
+					placeholder={TEXTS[lang].inputSurnamePlaceholder}
 					minLength={2}
 					maxLength={30}
 					required
 				/>
 			</CustomInput>
 
-			<CustomInput inputName={"userEmail"} labelName={"Email"}>
+			<CustomInput inputName={"userEmail"} labelName={TEXTS[lang].labelEmail}>
 				<input
 					type="email"
 					name="userEmail"
 					id="userEmail"
 					value={userEmail}
 					onChange={onInputChange}
-					placeholder="Insert an Email"
+					placeholder={TEXTS[lang].inputEmailPlaceholder}
 					minLength={4}
 					maxLength={30}
 					required
@@ -88,10 +89,10 @@ export const LoginForm = () => {
 			{error && <p className="error-text">{error}</p>}
 			<div className="login-btns-container">
 				<button type="submit" className="btn-login">
-					Log in
+					{TEXTS[lang].loginButton}
 				</button>
 				<button type="reset" className="btn-reset-login">
-					Reset Form
+					{TEXTS[lang].resetButton}
 				</button>
 			</div>
 		</form>
