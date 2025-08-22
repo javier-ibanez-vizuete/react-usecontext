@@ -1,0 +1,27 @@
+#root {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+#root .light {
+	background-color: aliceblue;
+}
+
+#root .dark {
+	background-color: rgb(73, 68, 68);
+}
+
+.light * {
+	color: black;
+}
+
+.dark * {
+	color: white;
+}
+
+main {
+	flex: 1;
+
+	padding: var(--spacing-2xl) 0;
+}
