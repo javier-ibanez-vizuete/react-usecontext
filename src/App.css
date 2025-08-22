@@ -20,6 +20,20 @@
 	color: white;
 }
 
+.dark input {
+	background-color: rgb(116, 106, 106);
+	/* color: black; */
+}
+
+.dark input::placeholder {
+	color: #bfbcbc;
+}
+
+.error-text {
+	color: red;
+	font-weight: bolder;
+}
+
 main {
 	flex: 1;
 
