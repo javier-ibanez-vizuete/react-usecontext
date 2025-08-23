@@ -8,6 +8,7 @@ const INITIAL_LOGIN_STATE = {
 	userName: "",
 	userSurname: "",
 	userEmail: "",
+	role: "",
 };
 
 export const LoginForm = () => {
@@ -16,7 +17,7 @@ export const LoginForm = () => {
 
 	const [loginData, setLoginData] = useState(INITIAL_LOGIN_STATE);
 	const [error, setError] = useState("");
-	const { userName, userSurname, userEmail } = loginData;
+	const { userName, userSurname, userEmail, role } = loginData;
 
 	const onInputChange = (event) => {
 		const { name, value } = event.target;
@@ -85,6 +86,13 @@ export const LoginForm = () => {
 					maxLength={30}
 					required
 				/>
+			</CustomInput>
+			<CustomInput inputName={"role"} labelName={TEXTS[lang].labelRole}>
+				<select name="role" id="role" value={role} onChange={onInputChange}>
+					<option value="guest">{TEXTS[lang].optionGuest}</option>
+					<option value="user">{TEXTS[lang].optionUser}</option>
+					<option value="admin">{TEXTS[lang].optionAdmin}</option>
+				</select>
 			</CustomInput>
 			{error && <p className="error-text">{error}</p>}
 			<div className="login-btns-container">

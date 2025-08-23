@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import { AddButton } from "../AddButton/AddButton";
+import { DeleteButton } from "../DeleteButton/DeleteButton";
 
 export const ProductItem = ({ dataProduct }) => {
 	const { addItem, removeItem } = useContext(CartContext);
@@ -9,9 +11,13 @@ export const ProductItem = ({ dataProduct }) => {
 			<h4>{dataProduct.name}</h4>
 			<h3>{dataProduct.price}€</h3>
 			<div className="btns-quantity-container">
-				<button onClick={() => removeItem(dataProduct.id)}>-</button>
+				<DeleteButton handleButton={removeItem} data={dataProduct.id}>
+					-
+				</DeleteButton>
 				<p>{dataProduct.qty}</p>
-				<button onClick={() => addItem(dataProduct)}>+</button>
+				<AddButton text={"F"} handleButton={addItem} data={dataProduct}>
+					+
+				</AddButton>
 			</div>
 		</div>
 	);

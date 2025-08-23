@@ -5,7 +5,7 @@ const INITIAL_USER_STATE = {
 	name: "",
 	surname: "",
 	email: "",
-	role: "Guest",
+	role: "guest",
 };
 
 export const UserContext = createContext(null);
@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
 	const [user, setUser] = useState(INITIAL_USER_STATE);
 
 	const userLogin = (userData) => {
-		const { userName, userSurname, userEmail } = userData;
+		const { userName, userSurname, userEmail, role } = userData;
 		setUser((prevUserData) => {
 			if (!prevUserData.id) {
 				const randomNumber = (Math.random() * 10).toFixed(2);
@@ -25,7 +25,7 @@ export const UserProvider = ({ children }) => {
 					name: userName,
 					surname: userSurname,
 					email: userEmail,
-					role: "admin",
+					role: role,
 				};
 			}
 
@@ -34,7 +34,7 @@ export const UserProvider = ({ children }) => {
 				name: userName,
 				surname: userSurname,
 				email: userEmail,
-				role: "admin",
+				role: role,
 			};
 		});
 	};

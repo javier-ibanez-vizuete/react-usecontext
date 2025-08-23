@@ -3,19 +3,23 @@ import "./Cart.css";
 import { CartContext } from "../../context/CartContext";
 import { ProductItem } from "../ProductItem/ProductItem";
 import { LanguageContext } from "../../context/LanguageContext";
+import { PermissionsContext } from "../../context/PermissionsContext";
+import { ClearButton } from "../ClearButton/ClearButton";
 
 export const Cart = () => {
+	const { can } = useContext(PermissionsContext);
 	const { items, clearCart } = useContext(CartContext);
 	const { lang, TEXTS } = useContext(LanguageContext);
 
+	if (!can("view")) return null;
 	if (!items.length) return <h4>{TEXTS[lang].noCartsElements}</h4>;
 
 	return (
 		<section className="cart-section">
 			{items.length > 0 && (
-				<button className={"btn-delete-trolly"} onClick={clearCart}>
+				<ClearButton className={"btn-delete-trolly"} handleButton={clearCart}>
 					{TEXTS[lang].deleteCartLabel}
-				</button>
+				</ClearButton>
 			)}
 			{items.length > 0 &&
 				items

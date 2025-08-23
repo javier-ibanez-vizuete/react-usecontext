@@ -20,7 +20,8 @@
 	color: white;
 }
 
-.dark input {
+.dark input,
+.dark select {
 	background-color: rgb(116, 106, 106);
 	/* color: black; */
 }
