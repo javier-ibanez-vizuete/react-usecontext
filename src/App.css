@@ -1,0 +1,52 @@
+#root {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+#root .light {
+	background-color: aliceblue;
+}
+
+#root .dark {
+	background-color: rgb(73, 68, 68);
+}
+
+.light * {
+	color: black;
+}
+
+.dark * {
+	color: white;
+}
+
+.dark input,
+.dark select {
+	background-color: rgb(116, 106, 106);
+	/* color: black; */
+}
+
+.dark input::placeholder {
+	color: #bfbcbc;
+}
+
+.error-text {
+	color: red;
+	font-weight: bolder;
+}
+
+.tab {
+	padding: var(--spacing-lg);
+	background-color: var(--btn-xtra-color);
+	border-radius: var(--border-radius-card);
+}
+
+.tab.active {
+	background-color: var(--btn-primary-color);
+}
+
+main {
+	flex: 1;
+
+	padding: var(--spacing-2xl) 0;
+}

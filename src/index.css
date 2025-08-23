@@ -138,12 +138,13 @@ select {
 	color: #888;
 }
 
-select > option {
-	color: var(--primary-text-color);
-	background-color: var(--bg-color);
-	backdrop-filter: blur(1px);
-}
-
 select > option[disabled] {
 	color: #888;
+}
+
+button {
+	background: none;
+	border: none;
+	padding: none;
+	background-color: transparent;
 }
